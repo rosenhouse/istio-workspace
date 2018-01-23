@@ -1,1 +1,5 @@
 # istio-workspace
+
+```
+vagrant up
+```
