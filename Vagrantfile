@@ -17,11 +17,11 @@ Vagrant.configure(2) do |config|
     apt-get update -y || (sleep 40 && apt-get update -y)
     apt-get install -y git build-essential
     wget -qO- https://storage.googleapis.com/golang/go1.9.3.linux-amd64.tar.gz | tar -C /usr/local -xz
-    echo 'export GOPATH=/go; export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH' >> /home/vagrant/.bashrc
-    chown vagrant /go
-    chown vagrant /go/src
+    echo 'export GOPATH=/go; export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH' >> /home/ubuntu/.bashrc
+    chown ubuntu /go
+    chown ubuntu /go/src
   SHELL
 
-  # setup as vagrant user
+  # setup as ubuntu user
   config.vm.provision "shell", path: "setup.sh", privileged: false
 end
