@@ -15,3 +15,5 @@
 .vagrant
 *-cloudimg-console.log
 src
+pkg
+bin
