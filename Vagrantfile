@@ -11,19 +11,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.synced_folder "./src", "/go/src"  # don't sync bin or pkg
 
-  # setup as root user
-  config.vm.provision "shell", inline: <<-SHELL
-    set -e -x -u
-    apt-get update -y || (sleep 40 && apt-get update -y)
-    apt-get install -y git build-essential
-    wget -qO- https://storage.googleapis.com/golang/go1.9.3.linux-amd64.tar.gz | tar -C /usr/local -xz
-    echo 'export GOPATH=/go; export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH' >> /home/vagrant/.bashrc
-    chown vagrant /go
-    cd /go
-    mkdir -p src bin pkg
-    chown vagrant src bin pkg
-  SHELL
-
-  # setup as vagrant user
-  config.vm.provision "shell", path: "setup.sh", privileged: false
+  config.vm.provision "shell", path: 'setup-root.sh'
+  config.vm.provision "shell", privileged: false, path: 'setup-user.sh'
 end

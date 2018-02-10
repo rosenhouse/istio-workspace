@@ -9,7 +9,6 @@ then something like
 
 ```
 cd /go/src/istio.io/istio
-export ISTIO_BIN=/go/bin
-export KUBECONFIG=$PWD/.circleci/config
+make localTestEnv
 make pilot-test
 ```
