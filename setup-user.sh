@@ -10,6 +10,4 @@ EOF
 
 source $HOME/.profile
 
-dep version || go get github.com/golang/dep/cmd/dep
-
-go get -u istio.io/istio
+go get -u istio.io/istio || true
